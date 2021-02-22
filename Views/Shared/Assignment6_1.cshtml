@@ -1,0 +1,43 @@
+﻿@model int
+@{
+	ViewData["Title"] = "Assignment 6.1";
+	Student student1 = new Student { FirstName = "John", LastName = "Smith", Grade = "D" };
+	Student student2 = new Student { FirstName = "Sammie", LastName = "April", Grade = "A" };
+	Student student3 = new Student { FirstName = "Suzie", LastName = "Catherine", Grade = "B" };
+	Student[] student = { student1, student2, student3 };
+}
+<h1>@ViewData["Title"]</h1>
+
+<table class="table table-bordered table-striped">
+	<thead>
+		<tr><th>First Name</th><th>Last Name</th><th>Grade</th></tr>
+	</thead>
+	<tbody>
+		@if (Model <= 2)
+		{
+			<th1>You do not have a sufficient access level to view this data.</th1>
+		}
+		else if (Model > 2 && Model < 8)
+		{
+			@foreach (var s in student)
+			{
+				<tr>
+					<td>@s.FirstName</td>
+					<td>@s.LastName</td>
+				</tr>
+			}
+		}
+		else if(Model >= 8)
+		{
+			<th1>Hello Admin</th1>
+			@foreach (var s in student)
+			{
+				<tr>
+					<td>@s.FirstName</td>
+					<td>@s.LastName</td>
+					<td>@s.Grade</td>
+				</tr>
+			}
+		}
+	</tbody>
+</table>
